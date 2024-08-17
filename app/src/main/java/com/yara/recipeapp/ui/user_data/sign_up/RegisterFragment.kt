@@ -1,4 +1,4 @@
-package com.yara.myapplication.ui.user_data.sign_up
+package com.yara.recipeapp.ui.user_data.sign_up
 
 import android.app.AlertDialog
 import android.content.Intent

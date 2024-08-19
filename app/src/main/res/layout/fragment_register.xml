@@ -47,7 +47,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/edtMail"
+                android:id="@+id/edtmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -59,7 +59,7 @@
                 android:padding="12dp" />
 
             <EditText
-                android:id="@+id/edtPass"
+                android:id="@+id/edtpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -70,7 +70,7 @@
                 android:inputType="textPassword"
                 android:padding="12dp" />
             <EditText
-                android:id="@+id/edtPhone"
+                android:id="@+id/edtphone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -84,7 +84,7 @@
                 />
 
             <Button
-                android:id="@+id/btnSignUP"
+                android:id="@+id/btnsignUP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

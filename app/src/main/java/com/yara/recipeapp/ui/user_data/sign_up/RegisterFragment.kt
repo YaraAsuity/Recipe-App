@@ -39,12 +39,11 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         user_view_model = ViewModelProvider(this)[UserViewModel::class.java]
-        // initialize var
-        btnSignUP = view.findViewById(R.id.btnSignUP)
-        edtEmail = view.findViewById(R.id.edtMail)
-        edtPass = view.findViewById(R.id.edtPass)
-        edtPhone = view.findViewById(R.id.edtPhone)
-        //padding between text and icon
+
+        btnSignUP = view.findViewById(R.id.btnsignUP)
+        edtEmail = view.findViewById(R.id.edtmail)
+        edtPass = view.findViewById(R.id.edtpass)
+        edtPhone = view.findViewById(R.id.edtphone)
         edtEmail.compoundDrawablePadding = 30
         edtPass.compoundDrawablePadding = 30
         edtPhone.compoundDrawablePadding = 30
@@ -52,6 +51,8 @@ class RegisterFragment : Fragment() {
         var email: String
         var pass: String
         var phone: String
+
+
 
         btnSignUP.setOnClickListener {
             email = edtEmail.text.toString()
@@ -95,31 +96,38 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    private fun errorDialog(errorMessage: String) {
+    private fun errorDialog(errorMessage:String) {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton(Constants.OK) { _, _ -> }
-        builder.setTitle(Constants.ERROR_TITLE)
+        builder.setPositiveButton("OK"){_,_->}
+        builder.setTitle("EROR")
         builder.setMessage(errorMessage)
         builder.create().show()
     }
-
-    private fun errorSnackBar(view: View, errorMessage: String) {
-        Snackbar.make(view, errorMessage, Snackbar.LENGTH_LONG).show()
+    private fun errorSnackBar(view: View,errorMessage:String) {
+        Snackbar.make(view,errorMessage, Snackbar.LENGTH_LONG)
+            .show()
     }
 
-    private fun validateEmail(email: String): Boolean {
+    private fun validateEmail(email: String): Boolean
+    {
         val emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}"
-        return Regex(emailPattern).matches(email)
+        val regex = Regex(emailPattern)
+        return regex.matches(email)
     }
 
-    private fun validatePassword(password: String): Boolean {
-        val strongPasswordPattern =
-            "(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[@\$!%?&_#])[A-Za-z\\d@\$!%?&_#]{8,}"
-        return Regex(strongPasswordPattern).matches(password)
+    private fun validatePassword(password: String): Boolean
+    {
+        val strongPasswordPattern = "(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@\$!%*?&_#])[A-Za-z\\d@\$!%*?&_#]{8,}"
+        val regex = Regex(strongPasswordPattern)
+        return regex.matches(password)
     }
 
-    private fun validatePhone(phone: String): Boolean {
+    private fun validatePhone(phone: String): Boolean
+    {
         val phonePattern = "01[\\d]{9,}"
-        return Regex(phonePattern).matches(phone)
+        val regex = Regex(phonePattern)
+        return regex.matches(phone)
     }
+
+
 }

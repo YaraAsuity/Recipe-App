@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.yara.recipeapp.Constants
 import com.yara.recipeapp.R
@@ -78,8 +79,8 @@ class RegisterFragment : Fragment() {
                                 val testID: User? = user_view_model.getUser(email)
                                 if (testID != null) {
                                     SharedPrefs.signIn(testID.id)
-                                    val intent = Intent(activity, MainActivity2::class.java)
-                                    startActivity(intent)
+                                    Navigation.findNavController(view)
+                                        .navigate(R.id.action_registerFragment_to_loginFragment)
                                 } else {
                                     errorSnackBar(view, Constants.ERROR_SIGNUP)
                                 }

@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
+import com.yara.recipeapp.Constants
 import com.yara.recipeapp.R
 import com.yara.recipeapp.ViewModel.UserViewModel
 import com.yara.recipeapp.data.SharedPrefs
@@ -56,9 +57,9 @@ class LoginFragment : Fragment() {
             val pass = EDTpass.text.toString()
 
             if( TextUtils.isEmpty(email) ){
-                errorSnackBar(view,"Email field is empty please enter your email",pass)
+                errorSnackBar(view,Constants.EMAIL_FIELD_EMPTY,pass)
             }else if(TextUtils.isEmpty(pass)){
-                errorSnackBar(view,"Password field is empty please enter your Password",pass)
+                errorSnackBar(view,Constants.PASSWORD_FIELD_EMPTY,pass)
             }
             else{
                 lifecycleScope.launch {
@@ -69,7 +70,7 @@ class LoginFragment : Fragment() {
                             val intent = Intent(activity, MainActivity2::class.java)
                             startActivity(intent)
                         }else{
-                            errorSnackBar(view,"password Invalid",user.password)
+                            errorSnackBar(view,Constants.PASSWORD_NOT_VALID,user.password)
 
                         }
 
@@ -101,21 +102,21 @@ class LoginFragment : Fragment() {
     }
     private fun errorSnackBar(view: View,errorMessage:String,pass:String) {
         Snackbar.make(view,errorMessage, Snackbar.LENGTH_LONG)
-            .setAction("OK"){
+            .setAction(Constants.OK){
                 errorDialog("password","your password is \" $pass \" \nBe honest don't use it to find out users' passwords ")
             }
             .show()
     }
     private fun errorDialogToRegister( view: View) {
         val builder = AlertDialog.Builder(requireContext())
-        builder.setPositiveButton("Sign up"){_,_->
+        builder.setPositiveButton(Constants.SIGN_UP){_,_->
             goToRegister(view)
             EDTemail.text.clear()
             EDTpass.text.clear()
         }
-        builder.setNegativeButton("stay"){_,_ -> }
-        builder.setTitle("ERROR")
-        builder.setMessage("Can't found this email please Sign up first")
+        builder.setNegativeButton(Constants.STAY){_,_ -> }
+        builder.setTitle(Constants.ERROR_TITLE)
+        builder.setMessage(Constants.NOT_FOUND_EMAIL)
         builder.create().show()
     }
 }

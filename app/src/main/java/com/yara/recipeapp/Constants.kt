@@ -12,4 +12,9 @@ object Constants {
     const val USER_EMAIL_EXISTS = "This user email already exists"
     const val ERROR_TITLE = "ERROR"
     const val OK = "OK"
+    const val SIGN_UP="Sign up"
+    const val STAY="stay"
+    const val NOT_FOUND_EMAIL="Can't found this email please Sign up first"
+
+
 }

@@ -1,17 +1,13 @@
 package com.yara.recipeapp.ui.home
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.bumptech.glide.Glide
 import com.yara.recipeapp.R
 import com.yara.recipeapp.ViewModel.HomeViewModel
 import com.yara.recipeapp.ViewModel.MealViewModelFactory
@@ -42,10 +38,6 @@ class HomeFragment : Fragment() {
            adapter.update(it)
        }
         binding.view1.adapter = adapter
-        binding.imgSwitcher.inAnimation = android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in)
-        binding.imgSwitcher.outAnimation = android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.slide_out)
-        startImageSwitching()
-        imageSwitcherHandling()
     }
     private fun spinnerHandling(){
         binding.chars.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -67,27 +59,6 @@ class HomeFragment : Fragment() {
                 true
             }
             popupMenu.show()
-        }
-    }
-    private fun startImageSwitching() {
-        val runnable = object : Runnable {
-            override fun run() {
-                viewModel.fetchRandomMeal()
-                Handler(Looper.getMainLooper()).postDelayed(this, 2000) // 2 seconds delay
-            }
-        }
-        Handler(Looper.getMainLooper()).post(runnable)
-    }
-    private fun imageSwitcherHandling() {
-        binding.imgSwitcher.setFactory {
-            ImageView(context).apply {
-                scaleType = ImageView.ScaleType.CENTER_CROP
-            }
-        }
-        viewModel.randomMeal.observe(viewLifecycleOwner) {
-            Glide.with(this)
-                .load(it.strMealThumb)
-                .into(binding.imgSwitcher.currentView as ImageView)
         }
     }
 }

@@ -76,4 +76,7 @@ dependencies {
     // animation
     val lottieVersion = "3.4.0"
     implementation("com.airbnb.android:lottie:$lottieVersion")
+    //okHTTP
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }

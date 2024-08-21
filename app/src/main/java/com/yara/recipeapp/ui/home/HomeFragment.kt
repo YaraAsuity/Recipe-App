@@ -19,6 +19,7 @@ import com.yara.recipeapp.data.remote.retrofit.Retrofit1
 import com.yara.recipeapp.data.repository.HomeRepo
 import com.yara.recipeapp.databinding.FragmentHomeBinding
 import com.yara.recipeapp.ui.adapters.AdapterHome
+import com.yara.recipeapp.ui.details.DetailsFragment
 
 class HomeFragment : Fragment() {
     private val repository = HomeRepo(Retrofit1.retrofit)
@@ -47,6 +48,7 @@ class HomeFragment : Fragment() {
         binding.imgSwitcher.outAnimation = android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.slide_out)
         startImageSwitching()
         imageSwitcherHandling()
+        itemClickHandling()
     }
     private fun spinnerHandling(){
         binding.chars.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -89,6 +91,19 @@ class HomeFragment : Fragment() {
             Glide.with(this)
                 .load(it.strMealThumb)
                 .into(binding.imgSwitcher.currentView as ImageView)
+        }
+    }
+    private fun itemClickHandling(){
+        adapter.setOnItemClickListener {
+            val fragment = DetailsFragment()
+            val bundle = Bundle().apply {
+                putString("meal_id", it.idMeal)
+            }
+            fragment.arguments = bundle
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit()
         }
     }
 }

@@ -5,8 +5,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yara.recipeapp.R
 import com.yara.recipeapp.ui.home.HomeFragment
+import com.yara.recipeapp.ui.search.SearchFragment
 
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,29 @@ class MainActivity2 : AppCompatActivity() {
                 .replace(R.id.fragment_container, fragment)
                 .commit()
         }
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    replaceFragment(HomeFragment())
+                    true
+                }
+                R.id.navigation_dashboard -> {
+                    replaceFragment(SearchFragment())
+                    true
+                }
+                R.id.navigation_notifications -> {
+                    //
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
 }

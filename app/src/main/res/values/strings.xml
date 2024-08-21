@@ -18,6 +18,8 @@
     <string name="all">All Recipes</string>
     <string name="sign_out">Sign out</string>
     <string name="about">About</string>
+    <string name="search">What Do You Want To Search for ?</string>
+    <string name="search_hint">Search for a Recipe ?</string>
     <string-array name="char_array">
         <item>A</item>
         <item>B</item>

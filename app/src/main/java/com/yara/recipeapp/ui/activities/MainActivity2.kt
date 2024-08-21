@@ -34,12 +34,12 @@ class MainActivity2 : AppCompatActivity() {
                     replaceFragment(HomeFragment())
                     true
                 }
-                R.id.navigation_dashboard -> {
+                R.id.navigation_search -> {
                     replaceFragment(SearchFragment())
                     true
                 }
-                R.id.navigation_notifications -> {
-                    //
+                R.id.navigation_favourite -> {
+                    //replaceFragment()
                     true
                 }
                 else -> false

@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.yara.recipeapp.R
 import com.yara.recipeapp.ViewModel.HomeViewModel
@@ -93,17 +94,9 @@ class HomeFragment : Fragment() {
                 .into(binding.imgSwitcher.currentView as ImageView)
         }
     }
-    private fun itemClickHandling(){
+    private fun itemClickHandling() {
         adapter.setOnItemClickListener {
-            val fragment = DetailsFragment()
-            val bundle = Bundle().apply {
-                putString("meal_id", it.idMeal)
-            }
-            fragment.arguments = bundle
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit()
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(it.idMeal.toInt()))
         }
     }
 }

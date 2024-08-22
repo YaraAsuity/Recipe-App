@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.yara.recipeapp.R
 import com.yara.recipeapp.ViewModel.SearchViewModel
 import com.yara.recipeapp.ViewModel.SearchViewModelFactory
@@ -43,15 +44,7 @@ class SearchFragment: Fragment() {
 
     private fun itemClickHandling(){
         adapter.setOnItemClickListener {
-            val fragment = DetailsFragment()
-            val bundle = Bundle().apply {
-                putString("meal_id", it.idMeal)
-            }
-            fragment.arguments = bundle
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit()
+            findNavController().navigate(SearchFragmentDirections.actionSearchFragmentToDetailsFragment(it.idMeal.toInt()))
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.yara.recipeapp.ui.search
+package com.yara.recipeapp.ui.fragments.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,6 @@ import com.yara.recipeapp.data.remote.retrofit.Retrofit1
 import com.yara.recipeapp.data.repository.SearchRepo
 import com.yara.recipeapp.databinding.FragmentSearchBinding
 import com.yara.recipeapp.ui.adapters.AdapterHome
-import com.yara.recipeapp.ui.details.DetailsFragment
 
 class SearchFragment: Fragment() {
     val repository = SearchRepo(Retrofit1.retrofit)

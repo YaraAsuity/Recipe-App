@@ -1,4 +1,4 @@
-package com.yara.recipeapp.ui.home
+package com.yara.recipeapp.ui.fragments.home
 
 import android.os.Bundle
 import android.os.Handler

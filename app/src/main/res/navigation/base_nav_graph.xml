@@ -17,7 +17,8 @@
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.yara.recipeapp.ui.user_data.sign_up.RegisterFragment"
-        android:label="RegisterFragment" >
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />

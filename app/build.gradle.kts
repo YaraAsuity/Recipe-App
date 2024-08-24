@@ -79,4 +79,7 @@ dependencies {
     //okHTTP
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    // read more text view
+    implementation ("kr.co.prnd:readmore-textview:1.0.0")
 }

@@ -12,4 +12,6 @@ interface RecipeServices {
     suspend fun getRandomRecipes(): ModelRandomRecipe
     @GET("search.php")
     suspend fun searchRecipes(@Query("s") query: String): ModelRecipe
+    @GET("lookup.php")
+    suspend fun getRecipeById(@Query("i") id: String):ModelRecipe
 }

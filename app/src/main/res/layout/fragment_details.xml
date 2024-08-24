@@ -45,30 +45,59 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:text="Name of Meal" />
 
-    <kr.co.prnd.readmore.ReadMoreTextView
-        android:id="@+id/details"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textViewMealCategory"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
         android:layout_marginTop="18dp"
-        android:layout_marginEnd="18dp"
-        app:readMoreColor="#0066FF"
-        app:readMoreMaxLine="3"
-        app:readMoreText="Read More"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMealArea"
+        app:layout_constraintStart_toStartOf="@+id/textViewMealArea"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMealArea"
+        tools:text="Category" />
+
+    <TextView
+        android:id="@+id/textViewMealArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/TvMealName"
+        app:layout_constraintTop_toBottomOf="@+id/TvMealName"
+        tools:text="area" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="95dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TvMealName"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textViewMealCategory">
+
+        <kr.co.prnd.readmore.ReadMoreTextView
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
+            android:textColor="@color/black"
+            app:readMoreColor="#0066FF"
+            app:readMoreMaxLine="3"
+            app:readMoreText="Read More" />
+    </ScrollView>
 
     <ImageView
         android:id="@+id/youtubeIcon"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/youtube"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/like"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="@+id/like"
+        app:layout_constraintTop_toBottomOf="@+id/like"
+        app:srcCompat="@drawable/youtube" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

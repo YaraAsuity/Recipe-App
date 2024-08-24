@@ -29,7 +29,6 @@ import com.yara.recipeapp.data.repository.HomeRepo
 import com.yara.recipeapp.databinding.FragmentHomeBinding
 import com.yara.recipeapp.ui.activities.MainActivity
 import com.yara.recipeapp.ui.adapters.AdapterHome
-import com.yara.recipeapp.ui.details.DetailsFragment
 
 class HomeFragment : Fragment() {
     private val repository = HomeRepo(Retrofit1.retrofit)

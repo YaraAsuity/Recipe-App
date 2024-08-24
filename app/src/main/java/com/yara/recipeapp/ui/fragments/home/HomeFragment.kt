@@ -1,14 +1,21 @@
 package com.yara.recipeapp.ui.fragments.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
 import android.widget.PopupMenu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -16,9 +23,11 @@ import com.bumptech.glide.Glide
 import com.yara.recipeapp.R
 import com.yara.recipeapp.ViewModel.HomeViewModel
 import com.yara.recipeapp.ViewModel.MealViewModelFactory
+import com.yara.recipeapp.data.SharedPrefs
 import com.yara.recipeapp.data.remote.retrofit.Retrofit1
 import com.yara.recipeapp.data.repository.HomeRepo
 import com.yara.recipeapp.databinding.FragmentHomeBinding
+import com.yara.recipeapp.ui.activities.MainActivity
 import com.yara.recipeapp.ui.adapters.AdapterHome
 import com.yara.recipeapp.ui.details.DetailsFragment
 
@@ -26,6 +35,7 @@ class HomeFragment : Fragment() {
     private val repository = HomeRepo(Retrofit1.retrofit)
     private val viewModel :HomeViewModel by viewModels(factoryProducer = { MealViewModelFactory(repository) })
     private var _binding: FragmentHomeBinding?= null
+    private lateinit var toolbar: Toolbar
     private val binding get() = _binding!!
     private val adapter : AdapterHome by lazy { AdapterHome(emptyList()) }
     override fun onCreateView(
@@ -50,6 +60,10 @@ class HomeFragment : Fragment() {
         startImageSwitching()
         imageSwitcherHandling()
         itemClickHandling()
+
+        setHasOptionsMenu(true)
+        setupToolbar(view)
+
     }
     private fun spinnerHandling(){
         binding.chars.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -63,7 +77,7 @@ class HomeFragment : Fragment() {
         }
     }
     private fun optionMenuHandling(){
-        binding.menu.setOnClickListener {
+        binding.toolbar.setOnClickListener {
             val popupMenu = PopupMenu(requireContext(), it)
             popupMenu.inflate(R.menu.option_menu)
             popupMenu.setOnMenuItemClickListener { menuItem ->
@@ -99,4 +113,26 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(it.idMeal.toInt()))
         }
     }
+    private fun setupToolbar(view: View) {
+        toolbar = view.findViewById(R.id.toolbar)
+        (activity as? AppCompatActivity)?.setSupportActionBar(toolbar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.option_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.sign_out -> {
+                SharedPrefs.signOut()
+                activity?.let {
+                    finishAffinity(it)
+                    val intent = Intent(it, MainActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+        }
 }

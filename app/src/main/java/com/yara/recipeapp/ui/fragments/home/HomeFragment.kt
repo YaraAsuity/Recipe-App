@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -27,6 +28,7 @@ import com.yara.recipeapp.data.SharedPrefs
 import com.yara.recipeapp.data.remote.retrofit.Retrofit1
 import com.yara.recipeapp.data.repository.HomeRepo
 import com.yara.recipeapp.databinding.FragmentHomeBinding
+import com.yara.recipeapp.ui.about.AboutFragment
 import com.yara.recipeapp.ui.activities.MainActivity
 import com.yara.recipeapp.ui.adapters.AdapterHome
 
@@ -75,13 +77,18 @@ class HomeFragment : Fragment() {
             }
         }
     }
-    private fun optionMenuHandling(){
+    private fun optionMenuHandling() {
         binding.toolbar.setOnClickListener {
             val popupMenu = PopupMenu(requireContext(), it)
             popupMenu.inflate(R.menu.option_menu)
             popupMenu.setOnMenuItemClickListener { menuItem ->
-                // Handle menu item clicks here
-                true
+                when (menuItem.itemId) {
+                    R.id.about -> {
+                        findNavController().navigate(R.id.about)
+                        true
+                    }
+                    else -> false
+                }
             }
             popupMenu.show()
         }
@@ -108,9 +115,6 @@ class HomeFragment : Fragment() {
         }
     }
     private fun itemClickHandling() {
-        adapter.setOnItemClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(it.idMeal.toInt()))
-        }
     }
     private fun setupToolbar(view: View) {
         toolbar = view.findViewById(R.id.toolbar)
@@ -123,15 +127,25 @@ class HomeFragment : Fragment() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.about -> {
+                Log.d("MainActivity", "About option selected")
+
+                activity?.supportFragmentManager?.beginTransaction()?.apply {
+                    replace(R.id.fragmentContainerView, AboutFragment())
+                    addToBackStack(null)
+                    commit()
+                }
+            }
             R.id.sign_out -> {
                 SharedPrefs.signOut()
                 activity?.let {
-                    finishAffinity(it)
                     val intent = Intent(it, MainActivity::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
+                    it.finish()
                 }
             }
         }
         return super.onOptionsItemSelected(item)
-        }
+    }
 }

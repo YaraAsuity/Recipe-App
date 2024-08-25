@@ -24,14 +24,6 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.yara.recipeapp.ui.fragments.home.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">  <action
-        android:id="@+id/action_homeFragment_to_aboutFragment"
-        app:destination="@id/aboutFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/aboutFragment"
         android:name="com.yara.recipeapp.ui.about.AboutFragment"
         android:label="AboutFragment"

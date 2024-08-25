@@ -97,7 +97,7 @@ class HomeFragment : Fragment() {
         val runnable = object : Runnable {
             override fun run() {
                 viewModel.fetchRandomMeal()
-                Handler(Looper.getMainLooper()).postDelayed(this, 2000) // 2 seconds delay
+                Handler(Looper.getMainLooper()).postDelayed(this, 3000) // 2 seconds delay
             }
         }
         Handler(Looper.getMainLooper()).post(runnable)
@@ -115,6 +115,9 @@ class HomeFragment : Fragment() {
         }
     }
     private fun itemClickHandling() {
+        adapter.setOnItemClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(it.idMeal.toInt()))
+        }
     }
     private fun setupToolbar(view: View) {
         toolbar = view.findViewById(R.id.toolbar)

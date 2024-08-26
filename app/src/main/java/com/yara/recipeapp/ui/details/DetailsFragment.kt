@@ -37,6 +37,7 @@ class DetailsFragment : Fragment() {
         viewModel.mealDetails.observe(viewLifecycleOwner) { mealResponse ->
             val meal = mealResponse.meals[0]
             binding.apply {
+                load.visibility = View.INVISIBLE
                 TvMealName.text = meal.strMeal
                 textViewMealCategory.text = "Category: ${meal.strCategory}"
                 textViewMealArea.text = "Area: ${meal.strArea}"
@@ -50,6 +51,8 @@ class DetailsFragment : Fragment() {
 
             Glide.with(this)
                 .load(meal.strMealThumb)
+                .placeholder(R.drawable.meal)
+                .error(R.drawable.error)
                 .into(binding.imageMeal)
     }
         viewModel.fetchMealById(mealId.toString())

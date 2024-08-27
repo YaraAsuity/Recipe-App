@@ -8,12 +8,12 @@
 
 
     <ImageView
-        android:id="@+id/like"
+        android:id="@+id/Love"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="18dp"
         android:layout_marginEnd="18dp"
-        android:src="@drawable/baseline_favorite_border_24"
+        android:src="@drawable/favourite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -105,11 +105,11 @@
         android:id="@+id/youtubeIcon"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/like"
-        app:layout_constraintHorizontal_bias="0.92"
-        app:layout_constraintStart_toStartOf="@+id/like"
-        app:layout_constraintTop_toBottomOf="@+id/like"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/Love"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@+id/Love"
+        app:layout_constraintTop_toBottomOf="@+id/Love"
         app:srcCompat="@drawable/youtube" />
 
 

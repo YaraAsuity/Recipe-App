@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favouriteFragment"
+            app:destination="@id/favouriteFragment" />
 
     </fragment>
     <fragment
@@ -40,4 +43,13 @@
                 app:argType="integer" />
         </action>
     </fragment>
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.yara.recipeapp.ui.favourites.FavouriteFragment"
+        android:label="Favourites">
+        <action
+            android:id="@+id/actionFavouriteFragmentToDetailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+
 </navigation>

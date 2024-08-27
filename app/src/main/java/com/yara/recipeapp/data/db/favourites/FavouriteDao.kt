@@ -1,23 +1,22 @@
-package com.yara.recipeapp.data.local
+package com.yara.recipeapp.data.local.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import com.yara.recipeapp.data.db.favourites.FavouriteEntity
+import androidx.room.*
+import com.yara.recipeapp.data.local.entities.FavouriteEntity
 
 @Dao
 interface FavouriteDao {
-    @Insert
-    suspend fun insert(favourite: FavouriteEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertFavorite(favorite: FavouriteEntity)
 
     @Delete
-    suspend fun delete(favourite: FavouriteEntity)
+    suspend fun deleteFavorite(favorite: FavouriteEntity)
 
-    @Query("SELECT * FROM favourites")
-    fun getAllFavourites(): LiveData<List<FavouriteEntity>>
+    @Query("SELECT * FROM favorites WHERE mealId = :mealId")
+    suspend fun getFavoriteById(mealId: String): FavouriteEntity?
 
-    @Query("SELECT COUNT(*) FROM favourites WHERE idMeal = :idMeal")
-    fun isFavourite(idMeal: Int): LiveData<Int>
+    @Query("SELECT * FROM favorites")
+    fun getAllFavorites(): LiveData<List<FavouriteEntity>>
 }
+

@@ -1,14 +1,15 @@
-package com.yara.recipeapp.data.local
+package com.yara.recipeapp.data.local.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.yara.recipeapp.data.db.favourites.FavouriteEntity
+import com.yara.recipeapp.data.local.dao.FavouriteDao
+import com.yara.recipeapp.data.local.entities.FavouriteEntity
 
-@Database(entities = [FavouriteEntity::class], version = 1)
+@Database(entities = [FavouriteEntity::class], version = 1, exportSchema = false)
 abstract class FavouriteDatabase : RoomDatabase() {
-    abstract fun favouriteDao(): FavouriteDao
+    abstract fun favoriteDao(): FavouriteDao
 
     companion object {
         @Volatile
@@ -19,8 +20,9 @@ abstract class FavouriteDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     FavouriteDatabase::class.java,
-                    "favourite_database"
-                ).build()
+                    "favorite_database"
+                ).fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }

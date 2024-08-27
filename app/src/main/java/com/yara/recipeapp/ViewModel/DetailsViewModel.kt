@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.yara.recipeapp.data.remote.models.ModelRecipe
 import com.yara.recipeapp.data.repository.DetailsRepo
-import com.yara.recipeapp.data.repository.SearchRepo
 import kotlinx.coroutines.launch
 
 class DetailsViewModel(private val mealRepository: DetailsRepo) : ViewModel() {
@@ -25,7 +24,6 @@ class DetailsViewModel(private val mealRepository: DetailsRepo) : ViewModel() {
             }
         }
     }
-
 }
 class DetailsViewModelFactory(private val repository: DetailsRepo) : ViewModelProvider.Factory {
 

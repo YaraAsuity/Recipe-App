@@ -34,7 +34,7 @@ class MainActivity2 : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_favourite -> {
-                    //navController.navigate()
+                    navController?.navigate(R.id.favouriteFragment)
                     true
                 }
                 else -> false

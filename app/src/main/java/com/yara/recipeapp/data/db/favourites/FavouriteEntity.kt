@@ -1,11 +1,13 @@
-package com.yara.recipeapp.data.db.favourites
+package com.yara.recipeapp.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "favourites")
+@Entity(tableName = "favorites")
 data class FavouriteEntity(
-    @PrimaryKey val idMeal: Int,
-    val strMeal: String,
-    val strMealThumb: String
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val mealId: String,
+    val mealName: String,
+
+    val mealThumb: String,
 )

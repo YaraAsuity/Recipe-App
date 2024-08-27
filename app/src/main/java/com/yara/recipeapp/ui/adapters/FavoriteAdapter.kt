@@ -1,32 +1,29 @@
 package com.yara.recipeapp.ui.favourites.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.yara.recipeapp.R
 import com.yara.recipeapp.data.local.entities.FavouriteEntity
 import com.yara.recipeapp.databinding.ItemFavouriteBinding
+// In FavouritesAdapter.kt
 
-class FavouritesAdapter(private val onItemClick: (FavouriteEntity) -> Unit) :
-    ListAdapter<FavouriteEntity, FavouritesAdapter.FavouritesViewHolder>(DIFF_CALLBACK) {
-
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FavouriteEntity>() {
-            override fun areItemsTheSame(oldItem: FavouriteEntity, newItem: FavouriteEntity): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areContentsTheSame(oldItem: FavouriteEntity, newItem: FavouriteEntity): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
+class FavouritesAdapter(
+    private val onItemClicked: (FavouriteEntity) -> Unit,
+    private val onDeleteClicked: (FavouriteEntity) -> Unit
+) : ListAdapter<FavouriteEntity, FavouritesAdapter.FavouritesViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouritesViewHolder {
-        val binding = ItemFavouriteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FavouritesViewHolder(binding)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_favourite, parent, false)
+        return FavouritesViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: FavouritesViewHolder, position: Int) {
@@ -34,24 +31,37 @@ class FavouritesAdapter(private val onItemClick: (FavouriteEntity) -> Unit) :
         holder.bind(favorite)
     }
 
-    inner class FavouritesViewHolder(private val binding: ItemFavouriteBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class FavouritesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val title: TextView = itemView.findViewById(R.id.textViewTitle)
+        private val imageView: ImageView = itemView.findViewById(R.id.imageView)
+        private val deleteIcon: ImageButton = itemView.findViewById(R.id.deleteIcon)
 
         fun bind(favorite: FavouriteEntity) {
-            binding.apply {
-                textViewTitle.text = favorite.mealName
+            title.text = favorite.mealName
+            // Use Glide or other image loading libraries to load images
+            Glide.with(itemView.context)
+                .load(favorite.mealThumb)
+                .placeholder(R.drawable.placeholder)
+                .into(imageView)
 
-                Glide.with(imageView.context)
-                    .load(favorite.mealThumb)
-                    .into(imageView)
+            itemView.setOnClickListener {
+                onItemClicked(favorite)
+            }
 
-                itemView.setOnClickListener {
-                    onItemClick(favorite)
-                }
+            deleteIcon.setOnClickListener {
+                onDeleteClicked(favorite)
+            }
+        }
+    }
 
-                deleteIcon.setOnClickListener {
-                    onItemClick(favorite)
-                }
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<FavouriteEntity>() {
+            override fun areItemsTheSame(oldItem: FavouriteEntity, newItem: FavouriteEntity): Boolean {
+                return oldItem.mealId == newItem.mealId
+            }
+
+            override fun areContentsTheSame(oldItem: FavouriteEntity, newItem: FavouriteEntity): Boolean {
+                return oldItem == newItem
             }
         }
     }

@@ -85,5 +85,6 @@ dependencies {
     // read more text view
     implementation ("kr.co.prnd:readmore-textview:1.0.0")
     implementation ("androidx.appcompat:appcompat:1.6.1")
+    // youtube player
 
 }

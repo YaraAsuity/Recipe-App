@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Recipe App</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="sin_up">تسجيل دخول لاول مره</string>
+    <string name="email_address">البريد الالكتروني</string>
+    <string name="password">كلمة السر</string>
+    <string name="phone">رقم التيليفون</string>
+    <string name="cancel">الغاء</string>
+    <string name="forget_pass">نسيت كلمة السر ؟</string>
+    <string name="are_you_sure">هل انت متأكد ؟</string>
+    <string name="confirm_signout">هل انت متأكد من تسجيل خروج ؟</string>
+    <string name="dont">ليس لدي حساب ؟ انشأ حساب جديد</string>
+    <string name="welcome">اهلااا !!!</string>
+    <string name="intro">ماذا تطبخ اليوم ؟</string>
+    <string name="all">كل الاطباق</string>
+    <string name="sign_out">تسجيل خروج</string>
+    <string name="about">عن التطبيق</string>
+    <string name="search">ما الذي تريد البحث عنه ؟</string>
+    <string name="search_hint">ابحث عن وصفه ؟</string>
+</resources>

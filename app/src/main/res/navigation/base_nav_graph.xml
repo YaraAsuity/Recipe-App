@@ -23,7 +23,12 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.yara.recipeapp.ui.about.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/fragment_about">
+    </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.yara.recipeapp.ui.user_data.login.SplashFragment"

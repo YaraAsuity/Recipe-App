@@ -11,10 +11,10 @@ class HomeRepo(private val mealApiService: RecipeServices) {
         return withContext(Dispatchers.IO) {
             try {
                 val response = mealApiService.getRecipes(letter)
-                response.meals // Return the list of meals
+                response.meals
             } catch (e: Exception) {
                 e.printStackTrace()
-                null // Return null in case of an error
+                null
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.yara.recipeapp.ViewModel
+package com.yara.recipeapp.ui.fragments.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.yara.recipeapp.data.remote.models.Meal
-import com.yara.recipeapp.data.repository.HomeRepo
 import com.yara.recipeapp.data.repository.SearchRepo
 import kotlinx.coroutines.launch
 

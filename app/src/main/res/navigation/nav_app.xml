@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.yara.recipeapp.ui.details.DetailsFragment"
+        android:name="com.yara.recipeapp.ui.fragments.details.DetailsFragment"
         android:label="DetailsFragment"
         tools:layout="@layout/fragment_details">
         <argument
@@ -51,5 +51,15 @@
             android:id="@+id/actionFavouriteFragmentToDetailsFragment"
             app:destination="@id/detailsFragment" />
     </fragment>
-
+    <dialog
+        android:id="@+id/signOutDialogFragment"
+        android:name="com.yara.recipeapp.ui.fragments.signout.SignOutDialogFragment"
+        android:label="SignOutDialogFragment" >
+    </dialog>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.yara.recipeapp.ui.about.AboutFragment"
+        android:label="AboutFragment"
+        tools:layout="@layout/fragment_about">
+    </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.yara.recipeapp.ui.details
+package com.yara.recipeapp.ui.fragments.details
 
 import android.content.Intent
 import android.graphics.PorterDuff
@@ -13,8 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.yara.recipeapp.R
-import com.yara.recipeapp.ViewModel.DetailsViewModel
-import com.yara.recipeapp.ViewModel.DetailsViewModelFactory
 import com.yara.recipeapp.data.local.database.FavouriteDatabase
 import com.yara.recipeapp.data.local.entities.FavouriteEntity
 import com.yara.recipeapp.data.remote.models.Meal

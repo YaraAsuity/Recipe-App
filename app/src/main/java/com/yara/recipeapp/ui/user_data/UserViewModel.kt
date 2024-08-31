@@ -1,4 +1,4 @@
-package com.yara.recipeapp.ViewModel
+package com.yara.recipeapp.ui.user_data
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

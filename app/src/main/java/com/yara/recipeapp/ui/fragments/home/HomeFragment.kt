@@ -16,14 +16,11 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.ActivityCompat.finishAffinity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.yara.recipeapp.R
-import com.yara.recipeapp.ViewModel.HomeViewModel
-import com.yara.recipeapp.ViewModel.MealViewModelFactory
 import com.yara.recipeapp.data.SharedPrefs
 import com.yara.recipeapp.data.remote.retrofit.Retrofit1
 import com.yara.recipeapp.data.repository.HomeRepo
@@ -34,9 +31,8 @@ import com.yara.recipeapp.ui.adapters.AdapterHome
 
 class HomeFragment : Fragment() {
     private val repository = HomeRepo(Retrofit1.retrofit)
-    private val viewModel :HomeViewModel by viewModels(factoryProducer = { MealViewModelFactory(repository) })
+    private val viewModel : HomeViewModel by viewModels(factoryProducer = { MealViewModelFactory(repository) })
     private var _binding: FragmentHomeBinding?= null
-    private lateinit var toolbar: Toolbar
     private val binding get() = _binding!!
     private val adapter : AdapterHome by lazy { AdapterHome(emptyList()) }
     override fun onCreateView(
@@ -50,7 +46,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
         spinnerHandling()
-        optionMenuHandling()
+        //optionMenuHandling()
        viewModel.mealsList.observe(viewLifecycleOwner){
            adapter.update(it)
        }
@@ -62,8 +58,8 @@ class HomeFragment : Fragment() {
         imageSwitcherHandling()
         itemClickHandling()
 
-        setHasOptionsMenu(true)
-        setupToolbar(view)
+        //setHasOptionsMenu(true)
+       // setupToolbar(view)
 
     }
     private fun spinnerHandling(){
@@ -77,6 +73,7 @@ class HomeFragment : Fragment() {
             }
         }
     }
+    /*
     private fun optionMenuHandling() {
         binding.toolbar.setOnClickListener {
             val popupMenu = PopupMenu(requireContext(), it)
@@ -92,7 +89,7 @@ class HomeFragment : Fragment() {
             }
             popupMenu.show()
         }
-    }
+    }*/
     private fun startImageSwitching() {
         val runnable = object : Runnable {
             override fun run() {
@@ -119,6 +116,7 @@ class HomeFragment : Fragment() {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailsFragment(it.idMeal.toInt()))
         }
     }
+    /*
     private fun setupToolbar(view: View) {
         toolbar = view.findViewById(R.id.toolbar)
         (activity as? AppCompatActivity)?.setSupportActionBar(toolbar)
@@ -128,6 +126,7 @@ class HomeFragment : Fragment() {
         inflater.inflate(R.menu.option_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.about -> {
@@ -151,4 +150,5 @@ class HomeFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
+    */
 }

@@ -1,4 +1,4 @@
-package com.yara.recipeapp.ViewModel
+package com.yara.recipeapp.ui.fragments.favourite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

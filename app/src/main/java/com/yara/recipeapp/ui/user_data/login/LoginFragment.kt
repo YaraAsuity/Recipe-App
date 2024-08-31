@@ -17,7 +17,7 @@ import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.yara.recipeapp.Constants
 import com.yara.recipeapp.R
-import com.yara.recipeapp.ViewModel.UserViewModel
+import com.yara.recipeapp.ui.user_data.UserViewModel
 import com.yara.recipeapp.data.SharedPrefs
 import com.yara.recipeapp.data.db.User
 import com.yara.recipeapp.ui.activities.MainActivity2

@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.yara.recipeapp.R
-import com.yara.recipeapp.ViewModel.SearchViewModel
-import com.yara.recipeapp.ViewModel.SearchViewModelFactory
 import com.yara.recipeapp.data.remote.retrofit.Retrofit1
 import com.yara.recipeapp.data.repository.SearchRepo
 import com.yara.recipeapp.databinding.FragmentSearchBinding

@@ -33,13 +33,10 @@ object SharedPrefs {
             commit()
         }
     }
-
-    fun signOut()
-    {
-        with(sharedPreferences.edit())
-        {
-            putBoolean("login_status", false)
-            commit()
+    fun clearLoginStatus() {
+        with(sharedPreferences.edit()) {
+            clear()
+            apply()
         }
     }
 }

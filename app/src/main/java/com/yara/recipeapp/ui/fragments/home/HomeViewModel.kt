@@ -1,4 +1,4 @@
-package com.yara.recipeapp.ViewModel
+package com.yara.recipeapp.ui.fragments.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

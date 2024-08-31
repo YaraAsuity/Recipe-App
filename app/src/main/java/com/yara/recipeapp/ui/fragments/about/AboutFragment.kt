@@ -1,4 +1,4 @@
-package com.yara.recipeapp.ui.about
+package com.yara.recipeapp.ui.fragments.about
 
 import android.os.Bundle
 import android.view.LayoutInflater

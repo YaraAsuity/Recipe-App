@@ -25,7 +25,7 @@ import com.yara.recipeapp.data.SharedPrefs
 import com.yara.recipeapp.data.remote.retrofit.Retrofit1
 import com.yara.recipeapp.data.repository.HomeRepo
 import com.yara.recipeapp.databinding.FragmentHomeBinding
-import com.yara.recipeapp.ui.about.AboutFragment
+import com.yara.recipeapp.ui.fragments.about.AboutFragment
 import com.yara.recipeapp.ui.activities.MainActivity
 import com.yara.recipeapp.ui.adapters.AdapterHome
 

@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yara.recipeapp.databinding.FragmentFavouriteBinding
 import com.yara.recipeapp.ui.favourites.adapter.FavouritesAdapter
@@ -61,6 +64,12 @@ class FavouriteFragment : Fragment() {
         viewModel.favorites.observe(viewLifecycleOwner) { favorites ->
             adapter.submitList(favorites)
         }
+
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        (activity as AppCompatActivity).setupActionBarWithNavController(navController, appBarConfiguration)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity).supportActionBar?.title=" "
     }
 
     private fun removeFromFavorites(favorite: FavouriteEntity) {

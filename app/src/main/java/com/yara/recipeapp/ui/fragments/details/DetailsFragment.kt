@@ -4,13 +4,18 @@ import android.content.Intent
 import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Bundle
+import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.bumptech.glide.Glide
 import com.yara.recipeapp.R
 import com.yara.recipeapp.data.local.database.FavouriteDatabase
@@ -41,13 +46,20 @@ class DetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailsBinding.bind(view)
 
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        (activity as AppCompatActivity).setupActionBarWithNavController(navController, appBarConfiguration)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity).supportActionBar?.title=" "
         mealId = arguments?.let { DetailsFragmentArgs.fromBundle(it).id }.toString()
         checkIfFavorite(mealId)
 

@@ -28,6 +28,7 @@ class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        supportActionBar?.setDisplayShowHomeEnabled(false)
         _binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
         toolbar = findViewById(R.id.toolbar)

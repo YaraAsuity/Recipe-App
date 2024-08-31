@@ -19,6 +19,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.bumptech.glide.Glide
 import com.yara.recipeapp.R
 import com.yara.recipeapp.data.SharedPrefs
@@ -45,6 +47,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
+
+        val navController = findNavController()
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        (activity as AppCompatActivity).setupActionBarWithNavController(navController, appBarConfiguration)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        (activity as AppCompatActivity).supportActionBar?.title=" "
         spinnerHandling()
         //optionMenuHandling()
        viewModel.mealsList.observe(viewLifecycleOwner){

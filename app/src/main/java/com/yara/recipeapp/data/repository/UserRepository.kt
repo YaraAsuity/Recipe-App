@@ -16,6 +16,12 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun getUser(userMail:String ):User?{
         return userDao.readAllData(userMail)
     }
+    suspend fun updatePassword(userId: Int, newPassword: String) {
+        userDao.updatePassword(userId, newPassword)
+    }
+    suspend fun updateUser(user: User) {
+        userDao.updateUser(user)
+    }
 
 
 }

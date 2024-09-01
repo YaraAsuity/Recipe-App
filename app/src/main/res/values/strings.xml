@@ -2,27 +2,27 @@
     <string name="app_name">Recipe App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login" translatable="false">Login</string>
-    <string name="sin_up" translatable="false">Sign Up</string>
-    <string name="email_address" translatable="false">Email Address</string>
-    <string name="password" translatable="false">Password</string>
-    <string name="phone" translatable="false">Phone</string>
-    <string name="cancel" translatable="false">Cancel</string>
-    <string name="forget_pass" translatable="false">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="sin_up">Sign Up</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="cancel">Cancel</string>
+    <string name="forget_pass">Forgot Password?</string>
 
-    <string name="are_you_sure" translatable="false">Are You Sure?</string>
-    <string name="confirm_signout" translatable="false"> Do you really want to sign out? </string>
+    <string name="are_you_sure">Are You Sure?</string>
+    <string name="confirm_signout"> Do you really want to sign out? </string>
 
-    <string name="dont" translatable="false">Don"'"t have an account? Create new account.</string>
+    <string name="dont">Don"'"t have an account? Create new account.</string>
 
     <!-- Home Strings -->
-    <string name="welcome" translatable="false">Hi !!</string>
-    <string name="intro" translatable="false">What are you cooking today ?</string>
-    <string name="all" translatable="false">All Recipes</string>
-    <string name="sign_out" translatable="false">Sign out</string>
-    <string name="about" translatable="false">About</string>
-    <string name="search" translatable="false">What Do You Want To Search for ?</string>
-    <string name="search_hint" translatable="false">Search for a Recipe ?</string>
+    <string name="welcome">Hi !!</string>
+    <string name="intro">What are you cooking today ?</string>
+    <string name="all">All Recipes</string>
+    <string name="sign_out">Sign out</string>
+    <string name="about">About</string>
+    <string name="search">What Do You Want To Search for ?</string>
+    <string name="search_hint">Search for a Recipe ?</string>
     <string-array name="char_array">
         <item>A</item>
         <item>B</item>
@@ -51,5 +51,6 @@
         <item>Y</item>
         <item>Z</item>
     </string-array>
+
 
 </resources>

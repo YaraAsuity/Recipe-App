@@ -40,7 +40,9 @@ class LoginFragment : Fragment() {
             goToRegister(view)
         }
         view.findViewById<TextView>(R.id.forgotPass).setOnClickListener {
-            // errorDialog("Forgot Password"")
+
+            Navigation.findNavController(view)
+                .navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
         }
 
         btnlogin = view.findViewById(R.id.btnLogin)

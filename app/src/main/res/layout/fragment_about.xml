@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="?attr/selectableItemBackground"
+    android:background="@drawable/about_bkg"
     android:padding="16dp">
 
 
@@ -12,72 +13,111 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:background="@color/black"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/left" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" >
 
-    </Space>
+    <View
+        android:id="@+id/right_holder"
+        android:layout_width="330dp"
+        android:layout_height="230dp"
+        app:layout_constraintTop_toBottomOf="@id/back_button"
+        android:background="@drawable/about_holder"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <TextView
         android:id="@+id/creator_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Creator Name"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:text="Creator Names"
+        android:textColor="@color/holo_orange_light"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/right_holder"
+        app:layout_constraintStart_toStartOf="@id/right_holder"
+        app:layout_constraintTop_toTopOf="@id/right_holder" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp" >
-
-    </Space>
-
-    <TextView
-        android:id="@+id/app_synopsis"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="App Synopsis" />
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp" >
-
-    </Space>
     <GridLayout
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:columnCount="1"
-        android:rowCount="4">
+        android:rowCount="4"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="@id/right_holder"
+        app:layout_constraintTop_toBottomOf="@id/creator_name">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:text="1. Abdelrahman momtaz" />
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:text="1. Abdelrahman Momtaz" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
-            android:text="2. yara Asuity" />
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:text="2. Yara Asuity" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:textColor="@color/white"
             android:text="3. Sama Ahmed" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
-            android:layout_margin="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textStyle="italic"
             android:text="4. Mohamed Mohamed" />
 
 
     </GridLayout>
 
-</LinearLayout>
+    <View
+        android:id="@+id/left_holder"
+        android:layout_width="330dp"
+        android:layout_height="230dp"
+        app:layout_constraintTop_toBottomOf="@id/right_holder"
+        android:background="@drawable/about_holder"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/app_synopsis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This app provides Recipes with their Details and video."
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/left_holder"
+        app:layout_constraintEnd_toEndOf="@id/left_holder"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/left_holder"
+        app:layout_constraintTop_toTopOf="@id/left_holder"
+        app:layout_constraintVertical_bias="0.492" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,8 +73,13 @@ class MainActivity2 : AppCompatActivity() {
                 showSignOutDialog()
                 true
             }
+            R.id.about -> {
+                navController.navigate(R.id.aboutFragment)
+                true
+            }
+
             else -> {
-                item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+                super.onOptionsItemSelected(item)
             }
         }
     }
